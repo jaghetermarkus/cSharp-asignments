@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Contacts_MAUI.Mvvm.ViewModels"
+             xmlns:models="clr-namespace:Contacts_MAUI.Mvvm.Models"
+             x:DataType="viewmodels:DetailViewModel"
+             x:Class="Contacts_MAUI.Mvvm.Views.DetailPage"
+             BackgroundColor="#f3fbf8"
+             Shell.NavBarIsVisible="False"
+             Title="DetailPage">
+
+    <Grid RowDefinitions="auto,auto" Padding="20">
+
+        <Button Grid.Row="0" FontFamily="FontAwesomeSolid" Text="{x:Static models:FontAwesomeSolid.ArrowLeft}" Padding="0" FontSize="24" CornerRadius="8" HorizontalOptions="Start" Command="{Binding GoBackCommand}" Margin="0,0,0,20" BackgroundColor="#017f8f" TextColor="White"/>
+
+        <Frame Grid.Row="1" BackgroundColor="#e5f8f2" BorderColor="Transparent" HasShadow="True">
+            <VerticalStackLayout>
+                <Label Text="{Binding Contact.FullName}" Margin="0,0,0,10" TextColor="Black" />
+                <Label Text="{Binding Contact.Email}" Margin="0,0,0,10" TextColor="Black"/>
+                <Label Text="{Binding Contact.PhoneNumber}" Margin="0,0,0,10" TextColor="Black"/>
+                <Label Text="{Binding Contact.Address.FullAddress}" Margin="0,0,0,10" TextColor="Black"/>
+                <HorizontalStackLayout>
+                    <Label  Text="Skapad: " TextColor="Black"/>
+                    <Label  Text="{Binding Contact.Created}"  TextColor="Black"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+        </Frame>
+
+    </Grid>
+
+</ContentPage>

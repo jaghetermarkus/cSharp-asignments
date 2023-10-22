@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Contacts_MAUI.Mvvm.ViewModels"
+             xmlns:models="clr-namespace:Contacts_MAUI.Mvvm.Models"
+             x:DataType="{x:Type viewmodels:AddViewModel}"
+             x:Class="Contacts_MAUI.Mvvm.Views.AddPage"
+             BackgroundColor="#f3fbf8"
+             Shell.NavBarIsVisible="False"
+             Title="AddPage">
+
+    <Grid RowDefinitions="auto,*" Padding="20,10" RowSpacing="20" >
+
+        <Button Text="{x:Static models:FontAwesomeSolid.ArrowLeft}" FontFamily="FontAwesomeSolid" Padding="0" FontSize="24" Command="{Binding GoBackCommand}" Grid.Row="0" HorizontalOptions="Start" BackgroundColor="#017f8f" TextColor="White" />
+        <Button Text="{x:Static models:FontAwesomeSolid.Plus}" FontFamily="FontAwesomeSolid" FontSize="28" Padding="0" Command="{Binding AddCommand}" Grid.Row="0" HorizontalOptions="End" BackgroundColor="#05c281" TextColor="White" />
+
+        <Frame Grid.Row="1" BorderColor="Transparent" HasShadow="True" BackgroundColor="#e5f8f2">
+
+
+        <VerticalStackLayout  >
+            <Entry Text="{Binding Contact.FirstName}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Förnamn" Margin="0,10,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.LastName}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Efternamn" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.Email}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Mejladress" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.PhoneNumber}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Telefonnummer" Margin="0,0,0,30" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.Address.StreetName}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Gatanamn" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.Address.StreetNumber}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Gatunummer" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.Address.ZipCode}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Postnummer" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+            <Entry Text="{Binding Contact.Address.City}" TextColor="Black" PlaceholderColor="#4e5050" Placeholder="Stad / Ort" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+        </VerticalStackLayout>
+        </Frame>
+
+    </Grid>
+
+</ContentPage>

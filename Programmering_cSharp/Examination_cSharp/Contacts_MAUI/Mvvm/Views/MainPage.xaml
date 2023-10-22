@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Contacts_MAUI.Mvvm.ViewModels"
+             xmlns:models="clr-namespace:Contacts_MAUI.Mvvm.Models"
+             x:DataType="{x:Type viewmodels:MainViewModel}"
+             x:Class="Contacts_MAUI.Mvvm.Views.MainPage"
+             BackgroundColor="#f3fbf8"
+             Shell.NavBarIsVisible="False"
+             Title="MainPage">
+
+    <Grid RowDefinitions="auto,*" Padding="5,10,5,0" >
+
+        <CollectionView x:Name="ContactCollection" Grid.Row="1" ItemsSource="{Binding Contacts}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:ContactModel}" >
+                    <SwipeView>
+
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Radera"
+                                           IsDestructive="True"
+                                           BackgroundColor="#e74e39"
+                                           Command="{Binding Source={x:Reference ContactCollection}, Path=BindingContext.DeleteContactCommand}"
+                                           CommandParameter="{Binding .}" >
+                                </SwipeItem>
+                                <SwipeItem Text="Ändra"
+                                           IsDestructive="False"
+                                           BackgroundColor="Orange"
+                                           Command="{Binding Source={x:Reference ContactCollection}, Path=BindingContext.GoToEditCommand}"
+                                           CommandParameter="{Binding Id}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <StackLayout Margin="0,0,0,8" >
+
+                            <Grid ColumnDefinitions="*" BackgroundColor="Transparent">
+                                <Frame Grid.Column="0" BorderColor="Transparent" CornerRadius="0" HasShadow="True" BackgroundColor="#e5f8f2" >
+                                    <Grid RowDefinitions="auto,auto">
+
+                                        <Label Grid.Row="0" Text="{Binding FullName}" TextColor="Black" />
+                                        <Label Grid.Row="1" Text="{Binding Email}" TextColor="Gray"/>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding }"
+                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}, Path=GoToDetailCommand}" />
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                </Frame>
+                                    <!-- ALTERNATIVA KNAPPAR
+                                    <HorizontalStackLayout HorizontalOptions="End">
+
+
+                                        <Button Text="Ändra"
+                                                BackgroundColor="Orange"
+                                                Grid.Column="1"
+                                                HorizontalOptions="End"
+                                                Margin="10"
+                                                Command="{Binding Source={x:Reference ContactCollection}, Path=BindingContext.GoToEditCommand}"
+                                                CommandParameter="{Binding Id}" />
+                                        <Button Text="Delete"
+                                                BackgroundColor="Red"
+                                                Grid.Column="2"
+                                                HorizontalOptions="End"
+                                                Margin="10"
+                                                Command="{Binding Source={x:Reference ContactCollection}, Path=BindingContext.DeleteContactCommand}"
+                                                CommandParameter="{Binding .}" />
+
+                                    </HorizontalStackLayout>
+                                    -->
+                            </Grid>
+                        </StackLayout>
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Button BackgroundColor="#017f8f" TextColor="White" Margin="15,0,15,15" Grid.Row="0" HorizontalOptions="End" CornerRadius="8" Text="{x:Static models:FontAwesomeSolid.Plus}" FontFamily="FontAwesomeSolid" FontSize="28" Padding="0" Command="{Binding GoToAddCommand}" />
+
+    </Grid>
+
+</ContentPage>
