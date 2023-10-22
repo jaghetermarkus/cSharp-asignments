@@ -1,12 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Contacts_MAUI.Mvvm.Models;
-using Contacts_MAUI.Mvvm.Views;
-using Contacts_MAUI.Services;
+using ContactsApp.Mvvm.Models;
+using ContactsApp.Mvvm.Views;
+using ContactsApp.Services;
 using Microsoft.Maui.ApplicationModel.Communication;
+using Microsoft.Maui.Controls;
 
-namespace Contacts_MAUI.Mvvm.ViewModels;
+namespace ContactsApp.Mvvm.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
@@ -37,6 +41,18 @@ public partial class MainViewModel : ObservableObject
         await Shell.Current.GoToAsync(nameof(AddPage));
     }
 
+    /* ALTERNATIV GoToEdit
+    [RelayCommand]
+    async Task GoToEdit(Guid contactId)
+    {
+        await Shell.Current.GoToAsync(nameof(EditPage),
+            new Dictionary<string, string>
+            {
+                { "ContactId", contactId.ToString() }
+            });
+    }
+    */
+
     // Skickar endast Contact.Id vidare, för att sedan söka fram hela kontakten på mottagarsidan istället. 
     [RelayCommand]
     async Task GoToEdit(Guid contactId)
@@ -64,4 +80,3 @@ public partial class MainViewModel : ObservableObject
     }
 
 }
-

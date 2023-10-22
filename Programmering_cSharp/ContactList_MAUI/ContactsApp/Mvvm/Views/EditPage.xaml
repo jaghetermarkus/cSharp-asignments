@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ContactsApp.Mvvm.ViewModels"
+             xmlns:models="clr-namespace:ContactsApp.Mvvm.Models"
+             x:DataType="{x:Type viewmodels:EditViewModel}"
+             x:Class="ContactsApp.Mvvm.Views.EditPage"
+             BackgroundColor="#f6fcf9"
+             Shell.NavBarIsVisible="False"
+             Title="EditPage">
+
+    <Grid RowDefinitions="auto,*" Padding="20,10">
+
+        <Button Grid.Row="0" FontSize="24" Padding="0" Text="Bakåt" CornerRadius="8" HorizontalOptions="Start" Command="{Binding GoBackCommand}" Margin="0,0,0,20" BackgroundColor="#017f8f" TextColor="White"/>
+        <Button Grid.Row="0" Text="Spara" Padding="0" FontSize="24" CornerRadius="8" HorizontalOptions="End" CommandParameter="{Binding Contact}" Command="{Binding SaveChangesCommand} " Margin="0,0,0,20" BackgroundColor="#05c281" TextColor="White"/>
+
+        <Frame Grid.Row="1" BackgroundColor="#e5f8f2" HasShadow="True" BorderColor="Transparent">
+            <VerticalStackLayout>
+                <Entry Text="{Binding Contact.FirstName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.LastName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8" />
+                <Entry Text="{Binding Contact.Email}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.PhoneNumber}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.StreetName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.StreetNumber}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.ZipCode}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.City}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+
+
+    </Grid>
+
+</ContentPage>

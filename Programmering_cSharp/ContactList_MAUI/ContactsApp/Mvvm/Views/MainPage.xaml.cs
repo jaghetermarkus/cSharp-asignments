@@ -1,8 +1,9 @@
-﻿using Contacts_MAUI.Mvvm.Models;
-using Contacts_MAUI.Mvvm.ViewModels;
-using Contacts_MAUI.Services;
+﻿using ContactsApp.Mvvm.Models;
+using ContactsApp.Mvvm.ViewModels;
+using ContactsApp.Services;
+using Microsoft.Maui.Controls;
 
-namespace Contacts_MAUI.Mvvm.Views;
+namespace ContactsApp.Mvvm.Views;
 
 [QueryProperty(nameof(UpdatedContact), "updatedContact")]
 public partial class MainPage : ContentPage
@@ -19,15 +20,16 @@ public partial class MainPage : ContentPage
                 // Tilldela värdet från föregående sida till nedan variabel och skicka vidare för uppdatering av listan
                 updatedContact = value;
                 contactService.SaveUpdatedContact(updatedContact);
+                updatedContact = null;
             }
         }
     }
 
 
     public MainPage(MainViewModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext = viewModel;
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
         contactService = new ContactService();
-	}
+    }
 }

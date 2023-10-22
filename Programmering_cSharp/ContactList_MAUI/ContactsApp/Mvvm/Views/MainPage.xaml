@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:Contacts_MAUI.Mvvm.ViewModels"
-             xmlns:models="clr-namespace:Contacts_MAUI.Mvvm.Models"
+             xmlns:viewmodels="clr-namespace:ContactsApp.Mvvm.ViewModels"
+             xmlns:models="clr-namespace:ContactsApp.Mvvm.Models"
              x:DataType="{x:Type viewmodels:MainViewModel}"
-             x:Class="Contacts_MAUI.Mvvm.Views.MainPage"
+             x:Class="ContactsApp.Mvvm.Views.MainPage"
              BackgroundColor="#f3fbf8"
              Shell.NavBarIsVisible="False"
              Title="MainPage">
@@ -14,8 +14,6 @@
         <CollectionView x:Name="ContactCollection" Grid.Row="1" ItemsSource="{Binding Contacts}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:ContactModel}" >
-                    <!--
-                    Alternativ swipe-funktion. Funkar inte på Windows! Ta då bort HorizontalStackLayout på rad 51 och nedåt
                     <SwipeView>
 
                         <SwipeView.RightItems>
@@ -33,8 +31,9 @@
                                            CommandParameter="{Binding Id}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
+
                         <StackLayout Margin="0,0,0,8" >
-                    -->
+
                             <Grid ColumnDefinitions="*" BackgroundColor="Transparent">
                                 <Frame Grid.Column="0" BorderColor="Transparent" CornerRadius="0" HasShadow="True" BackgroundColor="#e5f8f2" >
                                     <Grid RowDefinitions="auto,auto">
@@ -52,7 +51,6 @@
 
 
                                         <Button Text="Ändra"
-                                                TextColor="White"
                                                 BackgroundColor="Orange"
                                                 Grid.Column="1"
                                                 HorizontalOptions="End"
@@ -60,7 +58,6 @@
                                                 Command="{Binding Source={x:Reference ContactCollection}, Path=BindingContext.GoToEditCommand}"
                                                 CommandParameter="{Binding Id}" />
                                         <Button Text="Delete"
-                                                TextColor="White"
                                                 BackgroundColor="Red"
                                                 Grid.Column="2"
                                                 HorizontalOptions="End"
@@ -69,17 +66,17 @@
                                                 CommandParameter="{Binding .}" />
 
                                     </HorizontalStackLayout>
+                                    <!-- ALTERNATIVA KNAPPAR
+                                    -->
                             </Grid>
-
-                            <!--
                         </StackLayout>
+
                     </SwipeView>
-                            -->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         
-        <Button BackgroundColor="#017f8f" TextColor="White" Margin="15,0,15,15" Grid.Row="0" HorizontalOptions="End" CornerRadius="8" Text="{x:Static models:FontAwesomeSolid.Plus}" FontFamily="FontAwesomeSolid" FontSize="28" Padding="0" Command="{Binding GoToAddCommand}" />
+        <Button BackgroundColor="#017f8f" TextColor="White" Margin="15,0,15,15" Grid.Row="0" HorizontalOptions="End" CornerRadius="8" Text="Lägg till" FontSize="28" Padding="0" Command="{Binding GoToAddCommand}" />
 
     </Grid>
 

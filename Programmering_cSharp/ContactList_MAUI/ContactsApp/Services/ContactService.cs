@@ -1,12 +1,15 @@
-﻿using Contacts_MAUI.Interfaces;
-using Contacts_MAUI.Mvvm.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using ContactsApp.Interfaces;
+using ContactsApp.Mvvm.Models;
 using Newtonsoft.Json;
 
-namespace Contacts_MAUI.Services;
+namespace ContactsApp.Services;
 
 public class ContactService : IContactService
 {
-    private static readonly string filePath = @"/Users/markuskarlsson/Nackademin/cSharp/myProjects/Examination_cSharp/Contacts_MAUI/ListOfContacts.Json";
+    private static readonly string filePath = @"/Users/markuskarlsson/Nackademin/cSharp/assignments/Programmering_cSharp/ContactList_MAUI/ContactsApp/ListOfContacts.Json";
     private static List<ContactModel> contacts = new List<ContactModel>();
     private JsonService _jsonService = new JsonService();
     public static event Action ContactsUpdated;
@@ -34,7 +37,7 @@ public class ContactService : IContactService
     {
         if (contact != null)
             contacts.Remove(contact);
-            
+
         WhenContactsUpdated();
     }
 
@@ -50,7 +53,18 @@ public class ContactService : IContactService
     // Skickar in uppdaterad kontakt och uppdaterar lokal lista samt Json-fil. 
     public void SaveUpdatedContact(ContactModel updatedContact)
     {
-        // Kontakt uppdateras omgående när den kommer in i ContactService. Behöver endast skrivas mot .json samt uppdatera gränssnitt
+        /* Kod behövs inte för uppdatering. Listan uppdaterad direkt när kontakten tas emot av metoden.
+        ContactModel existingContact = contacts.FirstOrDefault(x => x.Id == updatedContact.Id);
+
+        if (existingContact != null)
+        {
+            // mapper.Map(updatedContact, existingContact);
+            existingContact.FirstName = updatedContact.FirstName;
+            existingContact.LastName = updatedContact.LastName;
+            existingContact.Email = updatedContact.Email;
+            existingContact.PhoneNumber = updatedContact.PhoneNumber;
+        }
+        */
         WhenContactsUpdated();
     }
 
@@ -62,4 +76,3 @@ public class ContactService : IContactService
     }
 
 }
-

@@ -1,8 +1,9 @@
-﻿using Contacts_MAUI.Mvvm.Models;
-using Contacts_MAUI.Mvvm.ViewModels;
-using Contacts_MAUI.Services;
+﻿using ContactsApp.Mvvm.Models;
+using ContactsApp.Mvvm.ViewModels;
+using ContactsApp.Services;
+using Microsoft.Maui.Controls;
 
-namespace Contacts_MAUI.Mvvm.Views;
+namespace ContactsApp.Mvvm.Views;
 
 [QueryProperty("ContactID", "ContactId")]
 public partial class EditPage : ContentPage
@@ -20,13 +21,27 @@ public partial class EditPage : ContentPage
             {
                 viewModel.Contact = contact;
             }
+
         }
     }
 
     public EditPage(EditViewModel viewModel)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = viewModel;
     }
 
+    /* OnNavigatedTo
+    protected override void OnNavigatedTo(string contactId)
+    {
+        base.OnNavigatedTo(contactId);
+
+
+
+        if (parameters.TryGetValue("ContactId", out var contactIdString) && Guid.TryParse(contactIdString, out var contactId))
+        {
+            ContactModel Contact = ContactService.GetOneContact(contactId);
+        }
+    }
+    */
 }

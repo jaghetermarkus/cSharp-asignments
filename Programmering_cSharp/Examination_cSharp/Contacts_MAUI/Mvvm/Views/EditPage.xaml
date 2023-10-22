@@ -16,14 +16,14 @@
 
         <Frame Grid.Row="1" BackgroundColor="#e5f8f2" HasShadow="True" BorderColor="Transparent">
             <VerticalStackLayout>
-                <Entry Text="{Binding Contact.FirstName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.LastName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8" />
-                <Entry Text="{Binding Contact.Email}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.PhoneNumber}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.Address.StreetName}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.Address.StreetNumber}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.Address.ZipCode}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
-                <Entry Text="{Binding Contact.Address.City}" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.FirstName}" Placeholder="Förnamn" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.LastName}" Placeholder="Efternamn" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8" />
+                <Entry Text="{Binding Contact.Email}" Placeholder="Mejladress" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.PhoneNumber}" Placeholder="Telefonnummer" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,30" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.StreetName}" Placeholder="Gatunamn" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.StreetNumber}" Placeholder="Gatunummer" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.ZipCode}" Placeholder="Postnummer" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
+                <Entry Text="{Binding Contact.Address.City}" Placeholder="Stad/Ort" PlaceholderColor="Gray" TextColor="Black" Margin="0,0,0,10" BackgroundColor="#f2fcf8"/>
 
             </VerticalStackLayout>
 

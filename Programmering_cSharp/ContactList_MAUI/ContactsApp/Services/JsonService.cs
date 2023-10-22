@@ -1,10 +1,15 @@
-﻿using System.Diagnostics;
-using Contacts_MAUI.Interfaces;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using ContactsApp.Interfaces;
 
-namespace Contacts_MAUI.Services;
+namespace ContactsApp.Services;
 
 public class JsonService : IJsonService
 {
+
+    // private static readonly string filePath = @"/Users/markuskarlsson/Nackademin/cSharp/myProjects/Examination_cSharp/Contacts_MAUI/ListOfContacts.Json";
+    // Inaktiverad sökväg då den ligger i ContactService nu istället. 
 
     // Skriver ut inskickade kontakter mot Json-fil i angiven sökväg
     public bool SaveToJson(string contentAsJson, string filePath)
@@ -44,4 +49,3 @@ public class JsonService : IJsonService
     }
 
 }
-
